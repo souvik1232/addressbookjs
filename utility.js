@@ -20,5 +20,10 @@ class AddresBook {
        let data = (JSON.stringify(this.person)).concat("\n");
        fs.writeFileSync('book.json',data,{encoding:"utf8",flag:"a"});
     }
+    display = ()=>{
+       fs.readFile('book.json','utf8',(err,data) => {
+           console.log(data);
+       }); 
+    }
 }
 module.exports = new AddresBook();
