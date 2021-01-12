@@ -3,6 +3,7 @@ const fs = require('fs');
 let user = fs.readFileSync('book.json','utf8');
 let data = JSON.parse(user);
 class AddresBook {
+
     addDetails = () =>{
        
     //    let obj =  this.display();
@@ -44,6 +45,13 @@ class AddresBook {
         temp =data['AddressBookArray'];
         let index = temp.map(function(item){return item.Phone}).indexOf(input);
         data['AddressBookArray'].splice(index,1);
+    }
+    editDetails = ()=>{
+        let input = readline.question('Enter the phone number of record you want to edit:');
+        let temp = [];
+        temp =data['AddressBookArray'];
+        let index = temp.map(function(item){return item.Phone}).indexOf(input);
+        data['AddressBookArray'].splice(index,1,this.addDetails());
     }
 }
 module.exports = new AddresBook();

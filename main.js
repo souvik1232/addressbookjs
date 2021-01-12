@@ -1,13 +1,15 @@
 // { "arrayname":[{ objcets}]}
 console.log("Welcome to Address Book");
 const readline = require('readline-sync');
+const { editDetails } = require('./utility');
 const address = require('./utility');
 let ans;
 do {
     console.log(
         "\n1.Add Details:\n",
         "2.Display Details:\n",
-        "3.Delete Details:");
+        "3.Delete Details:\n",
+        "4.Edit Details:");
     let input = readline.questionInt('Enter your choice->');
     console.log(input);
     switch (input) {
@@ -19,6 +21,9 @@ do {
             break;
         case 3:
             address.deleteDetails();
+            break;
+        case 4:
+            address.editDetails();
             break;
         default:
             break;  
