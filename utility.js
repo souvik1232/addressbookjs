@@ -1,29 +1,49 @@
 const readline = require('readline-sync');
 const fs = require('fs');
+let user = fs.readFileSync('book.json','utf8');
+let data = JSON.parse(user);
 class AddresBook {
-    person = {};
     addDetails = () =>{
+       
+    //    let obj =  this.display();
+    //    console.log(obj);
        let fName = readline.question('Enter your First Name:') ;
-       this.person["FirstName"] = fName;
+       //person { FirstName:fName };
        let lName = readline.question('Enter your Last Name:');
-       this.person["LastName"] = lName;
+       //person["LastName"] = lName;
        let addr = readline.question('Enter your address:');
-       this.person["Address"] = addr;
+       //person["Address"] = addr;
        let zip = readline.question('Enter your Zip Code:');
-       this.person["Zip"] = zip;
+       //person["Zip"] = zip;
        let city = readline.question('Enter your city name:');
-       this.person["City"] = city;
+       //person["City"] = city;
        let state = readline.question('Enter your state name:');
-       this.person["State"] = state;
+       //person["State"] = state;
        let phone = readline.question('Enter your phone number:');
-       this.person["Phone"] = phone;
-       let data = (JSON.stringify(this.person)).concat("\n");
-       fs.writeFileSync('book.json',data,{encoding:"utf8",flag:"a"});
+       //person["Phone"] = phone;
+       let person = {FirstName:fName,
+                    Lastname:lName,
+                    Address:addr,
+                    Zip:zip,
+                    City:city,
+                    State:state,
+                    Phone:phone};
+       data['AddressBookArray'].push(person);
+       fs.writeFileSync('book.json',JSON.stringify(data));
     }
     display = ()=>{
-       fs.readFile('book.json','utf8',(err,data) => {
-           console.log(data);
-       }); 
+        let temp = {};
+        temp =data;
+        console.log(temp['AddressBookArray']);
+        //  object = user.AddressBookArray;
+        //  return object; 
+    }
+    deleteDetails = ()=>{
+        let input = readline.question('Enter the phone number of record you want to delete:');
+        let temp = [];
+        temp =data['AddressBookArray'];
+        let index = temp.map(function(item){return item.Phone}).indexOf(input);
+        data['AddressBookArray'].splice(index,1);
     }
 }
 module.exports = new AddresBook();
