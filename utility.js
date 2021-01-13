@@ -75,5 +75,9 @@ class AddresBook {
     sortDetailsByZip = () =>{
         data['AddressBookArray'].sort(this.sortByZip);
     }
+    search = ()=>{
+        let input = readline.question('Enter the phone number of record you want to search:');
+        console.log(data['AddressBookArray'].filter(x => x.Phone == input));
+    }
 }
 module.exports = new AddresBook();
