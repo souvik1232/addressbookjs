@@ -10,9 +10,9 @@ do {
         "2.Display Details:\n",
         "3.Delete Details:\n",
         "4.Edit Details:\n",
-        "5.Sort by First Name");
+        "5.Sort by First Name\n",
+        "6.Sort by Zip");
     let input = readline.questionInt('Enter your choice->');
-    console.log(input);
     switch (input) {
         case 1:
             address.addDetails();
@@ -28,6 +28,9 @@ do {
             break;
         case 5:
             address.sortDetailsByName();
+            break;
+        case 6:
+            address.sortDetailsByZip();
             break;
         default:
             break;  

@@ -64,5 +64,16 @@ class AddresBook {
     sortDetailsByName = () =>{
         data['AddressBookArray'].sort(this.sortByName);
     }
+    sortByZip = (a,b)=>{
+        if (a.Zip>b.Zip) {
+            return 1;
+        } else if(a.Zip<b.Zip){
+            return -1;
+        }
+        return 0;
+    }
+    sortDetailsByZip = () =>{
+        data['AddressBookArray'].sort(this.sortByZip);
+    }
 }
 module.exports = new AddresBook();
