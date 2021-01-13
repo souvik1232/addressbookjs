@@ -9,7 +9,8 @@ do {
         "\n1.Add Details:\n",
         "2.Display Details:\n",
         "3.Delete Details:\n",
-        "4.Edit Details:");
+        "4.Edit Details:\n",
+        "5.Sort by First Name");
     let input = readline.questionInt('Enter your choice->');
     console.log(input);
     switch (input) {
@@ -24,6 +25,9 @@ do {
             break;
         case 4:
             address.editDetails();
+            break;
+        case 5:
+            address.sortDetailsByName();
             break;
         default:
             break;  

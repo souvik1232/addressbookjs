@@ -53,5 +53,16 @@ class AddresBook {
         let index = temp.map(function(item){return item.Phone}).indexOf(input);
         data['AddressBookArray'].splice(index,1,this.addDetails());
     }
+    sortByName = (a,b)=>{
+        if (a.FirstName.toUpperCase()>b.FirstName.toUpperCase()) {
+            return 1;
+        } else if (a.FirstName.toUpperCase()<b.FirstName.toUpperCase()){
+            return -1;
+        }
+        return 0;
+    }
+    sortDetailsByName = () =>{
+        data['AddressBookArray'].sort(this.sortByName);
+    }
 }
 module.exports = new AddresBook();
